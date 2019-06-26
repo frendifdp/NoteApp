@@ -83,7 +83,7 @@ class App extends Component{
 						<TextInput style={styles.search} placeholder="Type Here" />
 					</View>
 					<View style={styles.body}>
-						<TouchableOpacity style={styles.box} />
+						<TouchableOpacity style={styles.box}><Text style={{color: 'white'}}>dasdasdasdasdadadadsdasdasdasdasdadadads</Text></TouchableOpacity>
 						<TouchableOpacity style={styles.box} />
 						<TouchableOpacity style={styles.box} />
 						<TouchableOpacity style={styles.box} />

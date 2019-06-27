@@ -34,7 +34,7 @@ class App extends Component{
 
 	handleNavigate = () => {
 		const {navigation} = this.props;
-		navigation.navigate('Note')
+		navigation.navigate('AddNote')
 	};
 	toggleDrawer = () => {
 		const {navigation} = this.props;
@@ -46,42 +46,27 @@ class App extends Component{
 	render(){
 		return (
 			<View style={styles.container}>
-				
+				<View>
+					<TextInput style={styles.search} placeholder="Type Here" />
+				</View>
+				<FlatList numColumns={2}
+				  	data={[
+				  		{title: 'Title Text', key: 'item0'},
+				  		{title: 'Title Text', key: 'item1'},
+				  		{title: 'Title Text', key: 'item2'},
+				  		{title: 'Title Text', key: 'item3'}
+				  	]}
+				  	renderItem={({item}) => (
+				  		<View style={styles.box}>
+				    	<TouchableOpacity style={{backgroundColor: 'blue'}}>
+				        	<Text>{item.title}</Text>
+					    </TouchableOpacity>
+					    </View>
+				  	)}
+				/>
+
+				{/*
 				<ScrollView>
-					{/*<FlatList
-					  data={[{key: 'a'}, {key: 'b'}]}
-					  renderItem={({item}) => <Text>{item.key}</Text>}
-					/>
-
-								 <Modal
-			     //      animationType="slide"
-			     //      transparent={false}
-			     //      visible={this.state.modalVisible}
-			     //      onRequestClose={() => {
-			     //        Alert.alert('Modal has been closed.');
-			     //      }}>
-			     //      <View style={{marginTop: 22}}>
-			     //        <View>
-			     //          <Text>Hello World!</Text>
-
-			     //          <TouchableHighlight
-			     //            onPress={() => {
-			     //              this.setModalVisible(!this.state.modalVisible);
-			     //            }}>
-			     //            <Text>Hide Modal</Text>
-			     //          </TouchableHighlight>
-			     //        </View>
-			     //      </View>
-			     //    </Modal>
-
-			        
-			          onPress={() => {
-			            this.setModalVisible(true);*/}
-			          
-			          
-					<View>
-						<TextInput style={styles.search} placeholder="Type Here" />
-					</View>
 					<View style={styles.body}>
 						<TouchableOpacity style={styles.box}><Text style={{color: 'white'}}>dasdasdasdasdadadadsdasdasdasdasdadadads</Text></TouchableOpacity>
 						<TouchableOpacity style={styles.box} />
@@ -96,7 +81,8 @@ class App extends Component{
 						<TouchableOpacity style={styles.box} />
 					</View>
 				</ScrollView>
-				<TouchableOpacity style={styles.fab}>
+				*/}
+				<TouchableOpacity style={styles.fab} onPress={this.handleNavigate}>
 					<Icon name="plus" size={30} color='white' style={{right: -13, bottom: -11,justifyContent: 'center', alignItems: 'center'}}/>
 				</TouchableOpacity>
 			</View>
@@ -116,15 +102,15 @@ const styles = StyleSheet.create({
 	search: {
 		elevation: 5,
 		paddingLeft: 25,
-		margin: '5%',
+		margin: '3.5%',
 		justifyContent: 'center',
 		borderRadius: 25,
-		width: '90%',
+		width: '91.5%',
 		height: 45,
 	},
 	box: {
-		backgroundColor: 'blue',
-		marginLeft: '7%',
+		marginLeft: '3.5%',
+		marginRight: '3.5%',
 		height: 140,
 		width: '43%',
 		marginTop: 10,

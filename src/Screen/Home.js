@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, FlatList, TouchableHighlight, Modal, Alert} from 'react-native';
-import {createStackNavigator,createAppContainer} from 'react-navigation';
+import {createStackNavigator,createAppContainer, withNavigation} from 'react-navigation';
 import Icon from "react-native-vector-icons/FontAwesome";
 
 class MyBackButton extends Component {

@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 //import react in our code.
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Icon from "react-native-vector-icons/FontAwesome";
-// import all basic components
- 
+import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+
 export default class Screen1 extends Component {
-  //Screen1 Component
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.row}>
-                    <View style={styles.profil}/>
-                    <Text style={{color: 'black', fontSize: 15}}>Frendi Dwi</Text>
+                    <Image source={require('../../assets/images/w644.png')} style={styles.profil}/>
+                    <Text style={{color: 'black', fontSize: 25}}>Frendi Dwi</Text>
                 </View>
-                <View style={styles.row}>
-                    <Icon style={styles.category} name="plus-circle">
-                        <Text> Personal</Text>
-                    </Icon>
-                </View>
+                <FlatList style={{maxHeight: '19%'}}
+                    data={[
+                        {category: ' Personal', key: 'item0', img: require('../../assets/images/writing.png')},
+                        {category: ' Work', key: 'item1', img: require('../../assets/images/portfolio.png')},
+                        {category: ' Wishlist', key: 'item2', img: require('../../assets/images/wishlist.png')}
+                    ]}
+                    renderItem={({item}) => (
+                        <TouchableOpacity style={{marginLeft: 25}}>
+                            <Image style={{width: 25, height: 25}} source={item.img}/>
+                            <Text style={styles.category}>{item.category}</Text>
+                        </TouchableOpacity>
+                    )}
+                />
+                <TouchableOpacity style={{marginLeft: 25,}}>
+                    <Image style={{width: 25, height: 25}} source={require('../../assets/images/plus.png')}/>
+                    <Text style={styles.category}> Add Category</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -27,18 +36,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         margin: 5,
-        // paddingTop: 20,
-        // alignItems: 'center',
-        // marginTop: 50,
-        // justifyContent: 'center',
     },
     profil: {
-        backgroundColor: 'blue',
         marginTop: '15%',
         marginBottom: '5%',
         width: 100,
         height: 100,
-        borderRadius: 50
     },
     row: {
         alignItems: 'center',
@@ -46,10 +49,10 @@ const styles = StyleSheet.create({
         marginBottom: 100,
     },
     category: {
-        marginLeft: -90,
+        marginTop: -28,
+        marginLeft: 25,
+        marginBottom: 15,
         fontSize: 25,
-        height: 30,
-        fontWeight: 'bold',
         color: 'black'
     }
 });

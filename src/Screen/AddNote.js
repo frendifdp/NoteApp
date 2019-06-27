@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, TextInput, Image, Picker} from 'react-native';
 import {createStackNavigator, withNavigation} from 'react-navigation';
 import Header from '../Components/header';
-import Icon from "react-native-vector-icons/FontAwesome";
-
 
 class MyBackButton extends Component {
   render() {
     return (
-    	<TouchableOpacity>
-			<Icon name="minus" size={25} style={{marginLeft: 10}} onPress={() => { this.props.navigation.navigate('Home') }}/>
+    	<TouchableOpacity onPress={() => { this.props.navigation.navigate('Home') }}>
+			<Image style={{marginLeft: 10, width: 20, height: 20}} source={require('../../assets/images/left-arrow.png')} />
 		</TouchableOpacity>
     );
   }
@@ -20,6 +18,14 @@ const MyButton = withNavigation(MyBackButton);
 class App extends Component {
 	static navigationOptions = {
 		title: 'Add Note',
+		headerTitleStyle: {
+			marginLeft: '35%'
+		},
+		headerRight: (
+			<TouchableOpacity>
+				<Image source={require('../../assets/images/checked.png')} style={{marginRight: 10, width: 25, height: 25}}/>
+			</TouchableOpacity>
+		),
 		headerLeft: MyButton
 	}
 	constructor(){
@@ -38,8 +44,18 @@ class App extends Component {
 
 	render(){
 		return (
-			<View>
-				
+			<View style={{marginLeft: 25}}>
+				<View style={{marginTop: 75}}>
+					<TextInput placeholder="ADD TITLE ..." style={{fontSize: 25}}/>
+					<TextInput multiline={true} placeholder="ADD DESCRIPTION ..." style={{fontSize: 25, maxHeight: '70%'}}/>
+				</View>
+				<View style={{marginTop: 50}}>
+					<Text style={{fontSize: 25, fontWeight: 'bold', color: 'black'}}>Category</Text>
+					<Picker style={{marginTop: 5, elevation: 5, backgroundColor: 'white', width: 150}}>
+						<Picker.Item label="Java" value="java" />
+  						<Picker.Item label="JavaScript" value="js" />
+					</Picker>
+				</View>
 			</View>
 		)
 	}

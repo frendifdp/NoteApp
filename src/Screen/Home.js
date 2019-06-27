@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, FlatList, TouchableHighlight, Modal, Alert} from 'react-native';
+import {Image, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, FlatList, Modal} from 'react-native';
 import {createStackNavigator,createAppContainer, withNavigation} from 'react-navigation';
-import Icon from "react-native-vector-icons/FontAwesome";
 
-class MyBackButton extends Component {
+class Profil extends Component {
   render() {
     return (
-    	<TouchableOpacity>
-			<Icon name="minus" size={25} style={{marginLeft: 10}} onPress={() => { this.props.navigation.toggleDrawer()}}/>
+    	<TouchableOpacity onPress={() => { this.props.navigation.toggleDrawer()}}>
+			<Image style={{marginLeft: 10, width: 30, height: 30}} source={require('../../assets/images/w644.png')} />
 		</TouchableOpacity>
     );
   }
 }
 
-const MyButton = withNavigation(MyBackButton);
+const MyButton = withNavigation(Profil);
 
 class App extends Component{
 	static navigationOptions = {
@@ -23,12 +22,11 @@ class App extends Component{
 		},
 		headerRight: (
 			<TouchableOpacity>
-				<Icon name="sort" size={25} style={{marginRight: 10}}/>
+				<Image source={require('../../assets/images/download.png')} style={{marginRight: 10, width: 20, height: 20}}/>
 			</TouchableOpacity>
 		),
 		headerLeft: MyButton
 	}
-	// this.props.navigation.toggleDrawer()
 	constructor(props) {
 	  super();
 	  this.state = {};
@@ -47,10 +45,6 @@ class App extends Component{
 		const {navigation} = this.props;
 		navigation.navigate('AddNote')
 	};
-	toggleDrawer = () => {
-		const {navigation} = this.props;
-    	navigation.toggleDrawer();
-  	};
 	componentDidMount = () => {
 		
 	};
@@ -62,39 +56,31 @@ class App extends Component{
 				</View>
 				<FlatList numColumns={2}
 				  	data={[
-				  		{title: 'Title Text', key: 'item0'},
-				  		{title: 'Title Text', key: 'item1'},
-				  		{title: 'Title Text', key: 'item2'},
-				  		{title: 'Title Text', key: 'item3'}
+				  		{title: 'Title Text', key: 'item0', color: '#2FC2DF'},
+				  		{title: 'Title Text', key: 'item1', color: '#2FC2DF'},
+				  		{title: 'Title Text', key: 'item2', color: '#C0EB6A'},
+				  		{title: 'Title Text', key: 'item3', color: '#FAD06C'},
+				  		{title: 'Title Text', key: 'item4', color: '#C0EB6A'},
+				  		{title: 'Title Text', key: 'item5', color: '#FF92A9'}
 				  	]}
 				  	renderItem={({item}) => (
-				  		<View style={styles.box}>
-				    	<TouchableOpacity style={{backgroundColor: 'blue'}}>
+				    	<TouchableOpacity style={{
+				    		backgroundColor: item.color,
+				    		marginLeft: '3.5%',
+							marginRight: '3.5%',
+							height: 140,
+							width: '43%',
+							marginTop: 10,
+							marginBottom: 10,
+							borderRadius: 8,
+							elevation: 3
+						}}>
 				        	<Text>{item.title}</Text>
 					    </TouchableOpacity>
-					    </View>
 				  	)}
 				/>
-
-				{/*
-				<ScrollView>
-					<View style={styles.body}>
-						<TouchableOpacity style={styles.box}><Text style={{color: 'white'}}>dasdasdasdasdadadadsdasdasdasdasdadadads</Text></TouchableOpacity>
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-						<TouchableOpacity style={styles.box} />
-					</View>
-				</ScrollView>
-				*/}
 				<TouchableOpacity style={styles.fab} onPress={this.handleNavigate}>
-					<Icon name="plus" size={30} color='white' style={{right: -13, bottom: -11,justifyContent: 'center', alignItems: 'center'}}/>
+					<Text style={{color:'black', fontSize: 40, alignItems: 'center', right: -14, bottom: -3}}>+</Text>
 				</TouchableOpacity>
 			</View>
 		)
@@ -133,9 +119,10 @@ const styles = StyleSheet.create({
 		width: 50,
 		height: 50,
 		borderRadius: 25,
-		backgroundColor: 'pink',
+		backgroundColor: 'white',
 		right: 30,
-		bottom: 30
+		bottom: 30,
+		elevation: 5
 	},
 	title: {
 		color: 'white',

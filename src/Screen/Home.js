@@ -2,7 +2,18 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, FlatList, TouchableHighlight, Modal, Alert} from 'react-native';
 import {createStackNavigator,createAppContainer} from 'react-navigation';
 import Icon from "react-native-vector-icons/FontAwesome";
-import MyButton from '../Components/button';
+
+class MyBackButton extends Component {
+  render() {
+    return (
+    	<TouchableOpacity>
+			<Icon name="minus" size={25} style={{marginLeft: 10}} onPress={() => { this.props.navigation.toggleDrawer()}}/>
+		</TouchableOpacity>
+    );
+  }
+}
+
+const MyButton = withNavigation(MyBackButton);
 
 class App extends Component{
 	static navigationOptions = {

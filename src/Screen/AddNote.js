@@ -1,11 +1,26 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {createStackNavigator} from 'react-navigation';
+import {createStackNavigator, withNavigation} from 'react-navigation';
 import Header from '../Components/header';
+import Icon from "react-native-vector-icons/FontAwesome";
+
+
+class MyBackButton extends Component {
+  render() {
+    return (
+    	<TouchableOpacity>
+			<Icon name="minus" size={25} style={{marginLeft: 10}} onPress={() => { this.props.navigation.navigate('Home') }}/>
+		</TouchableOpacity>
+    );
+  }
+}
+
+const MyButton = withNavigation(MyBackButton);
 
 class App extends Component {
 	static navigationOptions = {
-		title: 'Add Note'
+		title: 'Add Note',
+		headerLeft: MyButton
 	}
 	constructor(){
 		super();
@@ -23,11 +38,8 @@ class App extends Component {
 
 	render(){
 		return (
-			<View style={styles.container}>
-				<Header title='This Note' />
-				<TouchableOpacity onPress={this.handleGoBack} style={{backgroundColor:'blue'}} >
-			        <Text style={{color:'white'}} >GO BACK</Text>
-        		</TouchableOpacity>
+			<View>
+				
 			</View>
 		)
 	}

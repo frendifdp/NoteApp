@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 //import react in our code.
-import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList, Modal, TextInput} from 'react-native';
 
 export default class Screen1 extends Component {
+    state = {
+        modalVisible: false,
+    };
+
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -23,10 +31,27 @@ export default class Screen1 extends Component {
                         </TouchableOpacity>
                     )}
                 />
-                <TouchableOpacity style={{marginLeft: 25,}}>
+                <TouchableOpacity style={{marginLeft: 25}} onPress={() => {this.setModalVisible(true);}}>
                     <Image style={{width: 25, height: 25}} source={require('../../assets/images/plus.png')}/>
                     <Text style={styles.category}> Add Category</Text>
                 </TouchableOpacity>
+
+                <Modal animationType="slide" transparent={true} visible={this.state.modalVisible}>
+                    <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center',backgroundColor: '#dddddd50', width: '100%', height: '100%'}}
+                        onPress={() => { this.setModalVisible(!this.state.modalVisible); }}>
+                        <TouchableOpacity style={{borderRadius: 5,elevation: 5, backgroundColor: 'white', width: '80%', height: 200}}>
+                            <TextInput style={styles.addcat} placeholder="Category" />
+                            <TextInput style={styles.addcat} placeholder="Url" />
+                            <TouchableOpacity style={{marginLeft: 150, marginTop: 50}}>
+                                <Text style={{color: 'black', fontSize: 20}}>Add</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{marginLeft: 200, marginTop: -20}}
+                            onPress={() => { this.setModalVisible(!this.state.modalVisible); }}>
+                                <Text style={{color: 'grey', fontSize: 20}}>Cancel</Text>
+                            </TouchableOpacity>
+                        </TouchableOpacity>
+                    </TouchableOpacity>
+                </Modal>
             </View>
         );
     }
@@ -54,5 +79,10 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         fontSize: 25,
         color: 'black'
+    },
+    addcat: {
+        fontSize: 20,
+        paddingLeft: 20,
+        marginTop: 10
     }
 });

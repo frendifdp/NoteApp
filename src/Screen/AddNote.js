@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, TextInput, Image, Picker} from 'react-native';
-import {createStackNavigator, withNavigation} from 'react-navigation';
+import {createStackNavigator, withNavigation, createAppContainer} from 'react-navigation';
 import Header from '../Components/header';
 
 class MyBackButton extends Component {
@@ -76,4 +76,4 @@ const AppNavigator = createStackNavigator({
   	}
 });
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);

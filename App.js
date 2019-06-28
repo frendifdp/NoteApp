@@ -2,6 +2,7 @@ import {View, Text} from 'react-native';
 import {createStackNavigator, createAppContainer, createDrawerNavigator} from 'react-navigation';
 import Home from './src/Screen/Home';
 import AddNote from './src/Screen/AddNote';
+import EditNote from './src/Screen/EditNote';
 import Drawer from './src/Components/drawer';
 
 // const AppNavigator = createStackNavigator({
@@ -17,6 +18,9 @@ const MyDrawer = createDrawerNavigator(
         },
         AddNote: {
             screen: AddNote,
+        },
+        EditNote: {
+        	screen: EditNote
         }
     },
     {
@@ -24,6 +28,16 @@ const MyDrawer = createDrawerNavigator(
         drawerWidth: 250
     }
 );
+// const MyNote = createStackNavigator(
+//     {
+//         Home: {
+//             screen: Home,
+//         },
+//         AddNote: {
+//             screen: AddNote,
+//         }
+//     }
+// );
 
 const appContainer = createAppContainer(MyDrawer);
 

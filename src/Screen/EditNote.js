@@ -1,32 +1,23 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, TextInput, Image, Picker} from 'react-native';
-import {createStackNavigator, withNavigation, createAppContainer} from 'react-navigation';
-import Header from '../Components/header';
-
-class MyBackButton extends Component {
-  render() {
-    return (
-    	<TouchableOpacity onPress={() => { this.props.navigation.navigate('Home') }}>
-			<Image style={{marginLeft: 10, width: 20, height: 20}} source={require('../../assets/images/left-arrow.png')} />
-		</TouchableOpacity>
-    );
-  }
-}
-
-const MyButton = withNavigation(MyBackButton);
+import {connect} from 'react-redux'
+import {editNote} from '../public/redux/actions/note';
 
 class App extends Component {
-	static navigationOptions = {
-		title: 'Edit Note',
-		headerTitleStyle: {
-			marginLeft: '35%'
-		},
-		headerRight: (
-			<TouchableOpacity>
-				<Image source={require('../../assets/images/checked.png')} style={{marginRight: 10, width: 25, height: 25}}/>
-			</TouchableOpacity>
-		),
-		headerLeft: MyButton
+	static navigationOptions = ({navigation}) => {
+		const {params = {}} = navigation.state;
+		return {
+			title: 'Edit Note',
+			headerTitleStyle: {
+				marginLeft: '30%'
+			},
+			headerRight: (
+				<TouchableOpacity onPress={params.editNote}>
+					<Image source={require('../../assets/images/checked.png')} style={{marginRight: 20, width: 25, height: 25}}/>
+				</TouchableOpacity>
+			)
+			//headerLeft: MyButton
+		}
 	}
 	constructor(){
 		super();
@@ -38,23 +29,59 @@ class App extends Component {
 		navigation.navigate('Home')
   	}
 
-	componentDidMount = () => {
+	editNote = () => {
+		const id = this.state.id
+		const title = this.state.title
+		const note = this.state.note
+		const category = this.state.category
+		try {
+			this.props.dispatch(editNote(id, {title, note, category}))
+			this.props.navigation.pop();
+		} catch (error) {
+			this.props.navigation.pop();
+		}
+	}
 
+	componentDidMount = () => {
+		this.setState({
+			id : this.props.navigation.state.params.id,
+			title : this.props.navigation.state.params.title,
+			note: this.props.navigation.state.params.note,
+			category: this.props.navigation.state.params.categoryId
+		})
+		this.props.navigation.setParams({editNote: this.editNote})
 	}
 
 	render(){
 		return (
 			<View style={{marginLeft: 25}}>
 				<View style={{marginTop: 75}}>
-					<TextInput placeholder="ADD TITLE ..." style={{fontSize: 25}}/>
-					<TextInput multiline={true} placeholder="ADD DESCRIPTION ..." style={{fontSize: 25, maxHeight: '70%'}}/>
+					<TextInput value={this.state.title} placeholder="ADD TITLE ..." style={{fontSize: 25}}
+						onChangeText={(title) =>
+							this.setState({ title })
+						}
+					/>
+					<TextInput value={this.state.note} multiline={true} placeholder="ADD DESCRIPTION ..." style={{fontSize: 25, maxHeight: '70%'}}
+						onChangeText={(note) =>
+							this.setState({ note })
+						}
+					/>
 				</View>
-				<View style={{marginTop: 50}}>
+				<View style={{marginTop: 200}}>
 					<Text style={{fontSize: 25, fontWeight: 'bold', color: 'black'}}>Category</Text>
-					<Picker style={{marginTop: 5, elevation: 5, backgroundColor: 'white', width: 150}}>
-						<Picker.Item label="Java" value="java" />
-  						<Picker.Item label="JavaScript" value="js" />
-					</Picker>
+					<View style={{elevation: 5, backgroundColor: 'white', marginTop: 5, width: 150}}>
+						<Picker
+						mode="dropdown"
+						selectedValue={this.state.category}
+						onValueChange={(itemValue, itemIndex) =>
+							this.setState({category: itemValue})
+						}
+						>
+						{ this.props.category.data.map((item, key)=>(
+            				<Picker.Item label={item.category} value={item.id}/>)
+            			)}
+						</Picker>
+					</View>
 				</View>
 			</View>
 		)
@@ -70,10 +97,15 @@ const styles = StyleSheet.create({
 	}
 });
 
-const AppNavigator = createStackNavigator({
-  	AddNote: {
-    	screen: App
-  	}
-});
+// const AppNavigator = createStackNavigator({
+//   	AddNote: {
+//     	screen: App
+//   	}
+// });
+const mapStateToProps = (state) => {
+    return{
+        category: state.category
+    }
+}
 
-export default createAppContainer(AppNavigator);
+export default connect(mapStateToProps)(App);

@@ -39,7 +39,7 @@ React Native invokes Objective-C APIs to render to iOS components, or Java APIs 
 2. react-native-cli (from npm)
 3. backend
 
-##Backend
+## Backend
 0. Make sure you have global install nodemon
 1. Clone the backend repository here `git clone https://github.com/frendifdp/simplenote-backend.git`
 2. Open project with your text editor

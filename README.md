@@ -37,6 +37,15 @@ React Native invokes Objective-C APIs to render to iOS components, or Java APIs 
 ## Requirements
 1. npm (node package manager) / yarn
 2. react-native-cli (from npm)
+3. backend
+
+##Backend
+0. Make sure you have global install nodemon
+1. Clone the backend repository here `git clone https://github.com/frendifdp/simplenote-backend.git`
+2. Open project with your text editor
+3. Open terminal
+4. Add the requirement with command `npm install` or `yarn`
+5. Start backend with command `npm start`
 
 ## How to run the app ?
 1. Clone or download first this repository with `git clone https://github.com/frendifdp/NoteApp.git`

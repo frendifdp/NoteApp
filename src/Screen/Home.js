@@ -89,6 +89,7 @@ class App extends Component{
 		}
 		if(q.sort !== undefined){
 			this.setState({sort: q.sort})
+			q.page = 0
 		}
 		else{
 			q.sort = this.state.sort

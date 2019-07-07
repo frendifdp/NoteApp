@@ -1,8 +1,5 @@
 const initialState = {
     isLoading: true,
-    isFinish: false,
-    isError: false,
-    isGrid: false,
     data: []
 }
 

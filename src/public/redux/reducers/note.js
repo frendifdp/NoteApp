@@ -1,7 +1,9 @@
 const initialState = {
     isLoading: true,
     isFinish: false,
-    data: []
+    data: [],
+    loaded: [],
+    max: 0
 }
 
 export default note = (state = initialState, action) => {

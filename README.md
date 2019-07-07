@@ -35,14 +35,17 @@ React Native invokes Objective-C APIs to render to iOS components, or Java APIs 
 <br>
 <br>
 ## Requirements
-1. npm (node package manager)
+1. npm (node package manager) / yarn
 2. react-native-cli (from npm)
 
 ## How to run the app ?
-1. Clone or download first this repository with `git clone https://github.com/andreferi3/ReactNative-Note-App.git`
+1. Clone or download first this repository with `git clone https://github.com/frendifdp/NoteApp.git`
 2. Open the project in your favorite text editor
-3. Open your terminal or cmd and type `npm install`
-4. And the last just type in your terminal or cmd `react-native run-android`, be sure if you connected with a device on debugging mode or use the emulator on debugging mode too.
+3. Open /src/public/redux/action/
+4. Open category.js and note.js
+5. Change the IP with your local ip of your PC
+6. Open your terminal and type `npm install` or `yarn`
+7. And the last just type in your terminal or cmd `react-native run-android`, be sure if you connected with a device on debugging mode or use the emulator on debugging mode too.
 
 ## Screenshot from the app
 <p align='center'>

@@ -59,10 +59,10 @@ React Native invokes Objective-C APIs to render to iOS components, or Java APIs 
 ## Screenshot from the app
 <p align='center'>
   <span>
-  <img src='https://github.com/andreferi3/ReactNative-Note-App/blob/master/src/Screens/Screenshot_1561651909.png' width=200 />
-  <img src='https://github.com/andreferi3/ReactNative-Note-App/blob/master/src/Screens/Screenshot_1561651914.png' width=200 />
-  <img src='https://github.com/andreferi3/ReactNative-Note-App/blob/master/src/Screens/Screenshot_1561651917.png' width=200 />
-  <img src='https://github.com/andreferi3/ReactNative-Note-App/blob/master/src/Screens/Screenshot_1561651923.png' width=200 />
+  <img src='https://github.com/frendifdp/NoteApp/blob/master/screenshot/1.jpeg' width=200 />
+  <img src='https://github.com/frendifdp/NoteApp/blob/master/screenshot/2.jpeg' width=200 />
+  <img src='https://github.com/frendifdp/NoteApp/blob/master/screenshot/3.jpeg' width=200 />
+  <img src='https://github.com/frendifdp/NoteApp/blob/master/screenshot/4.jpeg' width=200 />
   </span>
 </p>
 

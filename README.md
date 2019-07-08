@@ -36,8 +36,8 @@ React Native invokes Objective-C APIs to render to iOS components, or Java APIs 
 <br>
 
 ## Application
-1. You can see application demo here <a src="https://drive.google.com/open?id=1VMGYgn4qdh2E0kZeHsJZEvalu1aJlmxk">Demo</a>
-2. This is my build apk <a src="https://drive.google.com/open?id=12xD3AHOgOVrcknB3LtFrn0AmhzUGyVe1">Noteapp.apk</a>
+1. You can see application demo here [Demo](https://drive.google.com/open?id=1VMGYgn4qdh2E0kZeHsJZEvalu1aJlmxk)
+2. This is my build apk [Noteapp.apk](https://drive.google.com/open?id=12xD3AHOgOVrcknB3LtFrn0AmhzUGyVe1)
 
 ## Requirements
 1. npm (node package manager) / yarn
